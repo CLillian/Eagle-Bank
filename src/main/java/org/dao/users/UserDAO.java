@@ -1,8 +1,9 @@
 package org.dao.users;
 
-import io.vertx.ext.auth.User;
+import org.datamodels.Address;
+import org.datamodels.User;
 
 public interface UserDAO {
   
-  User makeNewUser();
+  User makeNewUser(String name, Address address, String phoneNumber, String email);
 }

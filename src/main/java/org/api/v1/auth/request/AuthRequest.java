@@ -1,24 +1,25 @@
 package org.api.v1.auth.request;
 
 import io.vertx.ext.web.RoutingContext;
+import org.api.v1.RequestBase;
 import org.api.v1.auth.request.body.AuthRequestBody;
 import org.dao.auth.AuthDAO;
 import org.utils.JWTUtils;
 
-public class AuthRequest {
+public class AuthRequest extends RequestBase {
   
-  private final RoutingContext routingContext;
   private final AuthRequestBody authRequestBody;
   private final AuthDAO authDAO;
   
   public AuthRequest(RoutingContext routingContext, AuthRequestBody authRequestBody,
       AuthDAO authDAO) {
-    this.routingContext = routingContext;
+    super(routingContext);
     this.authRequestBody = authRequestBody;
     this.authDAO = authDAO;
   }
   
-  public void getResponse() {
+  @Override
+  public void processRequest() {
     String username = authRequestBody.getUsername();
     String password = authRequestBody.getPassword();
     

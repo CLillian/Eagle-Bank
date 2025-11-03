@@ -1,23 +1,23 @@
 package org.api.v1.accounts.request;
 
 import io.vertx.ext.web.RoutingContext;
+import org.api.v1.RequestBase;
 import org.dao.accounts.AccountDAO;
 import org.utils.JWTUtils;
 
-public class ListAccountsRequest {
+public class ListAccountsRequest extends RequestBase {
   
-  private final RoutingContext routingContext;
   private final AccountDAO accountDAO;
   
   public ListAccountsRequest(RoutingContext routingContext, AccountDAO accountDAO) {
-    this.routingContext = routingContext;
+    super(routingContext);
     this.accountDAO = accountDAO;
   }
   
-  public void getResponse() {
-    String authToken = routingContext.request().getHeader("Authorization");
-    String userId = JWTUtils.getUserIdFromJWT(authToken);
+  @Override
+  public void processRequest() {
+    String userId = getUser();
     
-    
+    // todo
   }
 }

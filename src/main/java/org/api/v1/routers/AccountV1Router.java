@@ -5,7 +5,7 @@ import io.vertx.ext.web.RoutingContext;
 import org.api.v1.accounts.request.body.CreateAccountBody;
 import org.api.v1.endpoints.AccountEndpoints;
 
-public class AccountV1Router extends  RouterBase {
+public class AccountV1Router extends RouterBase {
   
   private final Router subRouter;
   private final AccountEndpoints accountEndpoints;

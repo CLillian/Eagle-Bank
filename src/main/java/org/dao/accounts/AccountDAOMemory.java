@@ -20,11 +20,12 @@ public class AccountDAOMemory implements AccountDAO {
   public Account createNewAccount(String userId, String accountName) {
     String newAccountNumber = makeAndFormatAccountNumber();
     
-    String dateTimeString = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+    // get unix timstamp
+    long unixTimeNow = System.currentTimeMillis() / 1000;
     
     Account newAccount =
         new Account(userId, newAccountNumber, SortCode.STANDARD, accountName, AccountType.PERSONAL,
-            0, Currency.GBP, dateTimeString, dateTimeString);
+            0, Currency.GBP, unixTimeNow, unixTimeNow);
     
     existingAccounts.add(newAccount);
     

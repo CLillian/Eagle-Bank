@@ -14,14 +14,14 @@ public class AccountEndpoints {
     CreateAccountRequest createAccountRequest = new CreateAccountRequest(routingContext, body,
         ProductionDAOs.getAccountDAO());
     
-    createAccountRequest.getResponse();
+    createAccountRequest.processRequest();
   }
   
   public void listAccounts(RoutingContext routingContext) {
     ListAccountsRequest listAccountsRequest = new ListAccountsRequest(routingContext,
         ProductionDAOs.getAccountDAO());
     
-    listAccountsRequest.getResponse();
+    listAccountsRequest.processRequest();
   }
 
 }
