@@ -1,0 +1,20 @@
+package org.api.routers;
+
+import io.vertx.core.Vertx;
+import io.vertx.ext.web.Router;
+import org.api.v1.endpoints.AccountEndpoints;
+import org.api.v1.routers.AccountV1Router;
+
+public class BarclaysRouter {
+
+  public Router create(Vertx vertx) throws Exception {
+    Router router = Router.router(vertx);
+    
+    io.vertx.ext.web.Router accountV1SubRouter = io.vertx.ext.web.Router.router(vertx);
+    AccountV1Router accountV1Router =
+        new AccountV1Router(accountV1SubRouter, new AccountEndpoints());
+    router.route("/v1/accounts*").subRouter(accountV1Router.deployHandler());
+
+    return router;
+  }
+}
